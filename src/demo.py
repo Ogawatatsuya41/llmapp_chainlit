@@ -1,24 +1,38 @@
+import os
+
 import chainlit as cl
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# .env ファイルから環境変数をロード
+load_dotenv()
+
+# OpenAI の API キーを設定
+api_key = os.getenv("Openai_api_key")
 
 
-@cl.step
-def tool():
-    return "Response from the tool!"
+client = OpenAI(api_key=api_key)
+@cl.on_chat_start
+async def start():
+    await cl.Message(content='こんにちは！どのようなお手伝いができますか？').send()
+settings = {
+    "model": "gpt-3.5-turbo",
+    "temperature": 0.7,
+    "max_tokens": 500,
+    "top_p": 0.9,
+    "frequency_penalty": 0.0,
+    "presence_penalty": 0.6,
+    "stop": ["\n\n", "User:", "System:"]
+}
 
 
-@cl.on_message  # this function will be called every time a user inputs a message in the UI
+@cl.on_message
 async def main(message: cl.Message):
-    """
-    This function is called every time a user inputs a message in the UI.
-    It sends back an intermediate response from the tool, followed by the final answer.
-    Args:
-        message: The user's message.
-    Returns:
-        None.
-    """
-
-    # Call the tool
-    tool()
-
-    # Send the final answer.
-    await cl.Message(content="This is the final answer").send()
+    response = client.chat.completions.create(
+        messages=[
+            {"role": "system", "content": "あなたは親切で役立つアシスタントです。"},
+            {"role": "user", "content": message.content}
+        ],
+        **settings
+    )
+    await cl.Message(content=str(response.choices[0].message.content)).send()
