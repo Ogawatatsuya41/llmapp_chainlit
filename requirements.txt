@@ -1,1 +1,8 @@
 chainlit==1.0.200
+
+langchain
+langchain_community
+PyPDF2
+pypdf
+chromadb
+langchainhub
