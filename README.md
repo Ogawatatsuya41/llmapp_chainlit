@@ -8,17 +8,11 @@
 - [特徴](#特徴)
 - [前提条件](#前提条件)
 - [インストール](#インストール)
-- [設定](#設定)
-- [プロジェクト構造](#プロジェクト構造)
 - [使用方法](#使用方法)
   - [1. シンプルなOpenAIチャット (`api.py`)](#1-シンプルなopenaiチャット-apipy)
   - [2. LangChain統合 (`app_.py`と`app_chain.py`)](#2-langchain統合-appapyとapp_chainpy)
   - [3. LangChainを使用したOpenAI APIとの連携 (`lang.py`)](#3-langchainを使用したopenai-apiとの連携-langpy)
   - [4. PDF対応のRetrieval-Augmented Generation (RAG) (`rag.py`)](#4-pdf対応のretrieval-augmented-generation-ragpy)
-- [トラブルシューティング](#トラブルシューティング)
-- [貢献方法](#貢献方法)
-- [ライセンス](#ライセンス)
-- [謝辞](#謝辞)
 
 ---
 
@@ -48,3 +42,79 @@ Chatbot デモプロジェクトへようこそ！このリポジトリでは、
 ```bash
 git clone https://github.com/matsuoinstitute/chatbot-demo.git
 cd chatbot-demo
+
+### 2. VSCode にて、clone してできた chatbot-demo フォルダを選択
+
+> ![alt text](resource/fig/vscode_フォルダ選択.png)
+
+### 3. env ファイルの設定
+
+> 以下のような構造になっていれば OK です
+
+> ![alt text](resource/fig/vscode_env.png)
+
+env.sample をコピー＆ペーストして、作成できたファイルを「.env」という名前に変更
+
+> 以下のような構造になっていれば OK です
+
+> ![alt text](resource/fig/vscode_env.png)
+
+.env ファイルには、「sk-」から始まる自分の OpenAI API キーを設定します。（step1 にて使用）
+
+### 4. 右下に出てくる、「コンテナを再度開く」ボタンを押す
+
+> ボタンが出てこない場合は、コマンドパレット（⌘+shift+p）を開けば、コンテナを開くボタンが出現します
+
+> ![alt text](resource/fig/vscode_コマンドパレットでコンテナを再度開く.png)
+
+---
+
+## 使用方法
+
+### [1. シンプルなOpenAIチャット (`api.py`)]
+
+```py
+# src直下に移動
+cd src
+```
+
+```sh
+# demo.pyを実行
+chainlit run api.py -w
+```
+
+### [2. LangChain統合 (`app_.py`と`app_chain.py`)]
+
+```py
+# src直下に移動
+cd src
+```
+
+```sh
+# demo.pyを実行
+chainlit run app.py -w
+```
+
+### [3. LangChainを使用したOpenAI APIとの連携 (`lang.py`)]
+
+```py
+# src直下に移動
+cd src
+```
+
+```sh
+# demo.pyを実行
+chainlit run lang.py -w
+```
+
+### [4. PDF対応のRetrieval-Augmented Generation (RAG) (`rag.py`)]
+
+```py
+# src直下に移動
+cd src
+```
+
+```sh
+# demo.pyを実行
+chainlit run rag.py -w
+```
