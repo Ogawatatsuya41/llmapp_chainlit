@@ -42,8 +42,9 @@ Chatbot デモプロジェクトへようこそ！このリポジトリでは、
 ```bash
 git clone https://github.com/matsuoinstitute/chatbot-demo.git
 cd chatbot-demo
+```
 
-### 2. VSCode にて、clone してできた chatbot-demo フォルダを選択
+### 2.VSCodeにて、cloneしてできたchatbot-demoフォルダを選択
 
 > ![alt text](resource/fig/vscode_フォルダ選択.png)
 
